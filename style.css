@@ -6,10 +6,11 @@ body {
   align-items: center;
   height: 100vh;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main{
-    width: 40%;
+  padding: 20px;
 }
 
 h1{
@@ -20,6 +21,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 500px;
 }
 
 form div {
@@ -76,4 +78,15 @@ div p{
 
 p a {
     text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  form div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  form div:nth-child(5){
+    flex-direction: row;
+  }
 }
