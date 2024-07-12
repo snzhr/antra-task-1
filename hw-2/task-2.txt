@@ -1,0 +1,49 @@
+1) Closures in JavaScript are useful because they allow a function to 
+remember the variables from the place where it was created, even after
+that place has finished executing. This helps in scenarios where you 
+want to maintain a private state or have functions that are closely 
+related share the same data. Common use case of closures is counter.
+Ex: 
+function counter() {
+    let count = 0;
+    return function() {
+      return ++count;
+    };
+  }
+
+##############################################################################
+
+2) First of all, it's better to use "let" or "const" instead of "var".
+So, if we feel that our variable's value will be changed later,
+then we use "let", otherwise we use "const". That is, "const" is used for
+constant variables, and "let" for changable variables.
+
+##############################################################################
+
+3) Hoisting is a behavior or a process where variable and function declarations are moved 
+to the top of their containing scope during the compile phase. And as a very common mistake,
+I would say it is "var" declaration hoisting. When we use "var" when creating variables,
+we can access it before the declaration. The problem is, it will work without an error, but it
+shouldn't work. So, in this case, we can use "let" or "const", so JavaScript will throw an
+error.
+
+##############################################################################
+
+4) 
+ex1: Here foo1() function takes "arg" parameter as a reference to the original array "arr" 
+and we are trying to push 3 into it. Since "arg" is a reference to arr, the original array was modified.
+Outcome: [1,2,3]
+
+ex2: Here foo2() function takes "arg" as a reference to "arr", however then reassigns "arg" to a new array [1, 2, 3, 4]. 
+That's why, this does not affect the original arr because arg is now pointing to a new array and we see
+the original array which is "arr" and the value is [1,2,3];
+Outcome: [1,2,3]
+
+ex3: Here foo3() function takes "arg" as a reference to "arr and assigns it to "b". 
+Since "b" is a reference to the same array which is "arr", pushing 3 into "b" wil modify the original array "arr".
+Cause arrays are reference types.
+Outcome: [1,2,3,3]
+
+ex4: Here foo4() function takes "arg" as a reference to "arr" and assigns it to "b". Then "b" is reassigned 
+to a new array [1, 2, 3, 4]. This does not affect the original "arr" because "b" is now pointing to a new array.
+Outcome: [1,2,3,3]
