@@ -59,13 +59,25 @@ ul {
   border-bottom: 1px solid #ddd;
 }
 
-.delete-button {
-  background: #d9534f;
+
+.delete-button, .edit-button {
   color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+.delete-button{
+background: #d9534f;
+}
+
+.edit-button{
+  background-color: rgb(98, 98, 187);
+}
+
+.edit-button:hover{
+  background-color: rgb(15, 15, 117);
 }
 
 .delete-button:hover {

@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function TodoForm({ handleAddTodo }) {
+export default function TodoForm({ handleSetTodo, editableTodo }) {
   const [inputText, setInputText] = useState("");
 
   function createTodo() {
     if (!inputText) {
       alert("Input cannot be empty.");
-      return
+      return;
     }
-    handleAddTodo(inputText);
+
+    handleSetTodo(inputText);
     setInputText("");
   }
+
+  useEffect(() => {
+    if (editableTodo) {
+      setInputText(editableTodo?.title);
+    }
+  }, [editableTodo]);
 
   return (
     <div className="input-container">
@@ -19,18 +26,15 @@ export default function TodoForm({ handleAddTodo }) {
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         id="new-task"
-        placeholder="Add a new task..."
+        placeholder="Add a new todo..."
         onKeyUp={(e) => {
           if (e.key === "Enter") {
             createTodo();
           }
         }}
       />
-      <button
-        id="add-task-button"
-        onClick={() => createTodo()}
-      >
-        Add
+      <button id="add-task-button" onClick={() => createTodo()}>
+        {editableTodo ? "Save" : "Add"}
       </button>
     </div>
   );
